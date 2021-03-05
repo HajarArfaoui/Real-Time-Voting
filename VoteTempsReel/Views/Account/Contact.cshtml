@@ -1,0 +1,43 @@
+﻿@model VoteTempsReel.Models.Contact
+@{
+    ViewBag.Title = "Contact";
+}
+
+<br />
+<h1>Contact</h1>
+@using (Html.BeginForm("Contact", "Account", FormMethod.Post,
+                    new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Prénom)
+                @Html.TextBoxFor(m => m.Prénom)
+            </li>
+
+            <li>
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Sujet)
+                @Html.TextBoxFor(m => m.Sujet)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Message)
+                @*@Html.TextBoxFor(m => m.Message)*@
+                <textarea style="width:300px;height:100px;"></textarea>
+            </li>
+            
+        </ol>
+        <input type="submit" value="Envoyer" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

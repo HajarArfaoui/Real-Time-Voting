@@ -1,0 +1,123 @@
+﻿@model VoteTempsReel.Models.UserProfile
+@{
+    ViewBag.Title = "Delete";
+}
+<br />
+<h1>Suppression</h1>
+
+<h3><font color="green">Voulez-vous vraiment supprimer ce compte?</font></h3>
+<fieldset>
+    <legend>Profile</legend>
+
+    <table>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+                @Html.DisplayFor(model => model.UserName)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+            <td>
+                @Html.DisplayFor(model => model.Nom)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Prenom)
+            </th>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+                @Html.DisplayFor(model => model.Prenom)
+            </td>
+
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CIN)
+            </th>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+                @Html.DisplayFor(model => model.CIN)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Adresse)
+            </th>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+                @Html.DisplayFor(model => model.Adresse)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+                @Html.DisplayFor(model => model.Date)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+                @Html.DisplayFor(model => model.Email)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+                @Html.DisplayFor(model => model.Password)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Telephone)
+            </th>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+                @Html.DisplayFor(model => model.Telephone)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Voter)
+            </th>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+                @Html.DisplayFor(model => model.Voter)
+            </td>
+        </tr>
+
+    </table>
+</fieldset>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Supprimer" /> |
+        @Html.ActionLink("Retour", "List")
+    </p>
+}

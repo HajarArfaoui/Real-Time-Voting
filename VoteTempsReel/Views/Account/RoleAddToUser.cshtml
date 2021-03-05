@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Role Add To User";
+    
+}
+<br />
+<h1>Changer Un Rôle</h1>
+<div class="spacerBody">
+    
+    
+
+    @using (Html.BeginForm("RoleAddToUser", "Account"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="message-success">@ViewBag.ResultMessage</div>
+    <div style="margin-left:8%">
+        <p>
+            <font size="3"><b>Username :</b> </font>&nbsp;@Html.DropDownList("JobTitle", ViewBag.JobTitle as SelectList, new
+                                                                                        {
+
+                                                                                            //style = "width: 309px ; height: 30px",
+                                                                                            style = "width: 309px; height:30px;border:1px solid #7D7D7D; border-radius:5px;background-color:#a6dbed; font-size: 14px;font-family:  Arial;font-size:medium;"
+
+
+                                                                                        })
+            <br /><br />
+            <font size="3">
+                <b>Rôle :</b>
+            </font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DropDownList("RoleName", ViewBag.Roles as SelectList, new
+                                                                                        {
+                                                                                            size = "1px",
+                                                                                            //style = "width: 309px ; height: 30px",
+                                                                                            style = "width: 309px; height:30px; border:1px solid #7D7D7D; border-radius:5px;background-color:#a6dbed;font-size: 14px;font-family:  Arial; Arial;font-size:medium;"
+
+                                                                                        })
+
+
+
+
+        </p>
+    </div>
+        <input type="submit" value="Appliquer" style="margin-left:38%" />
+    }
+</div>

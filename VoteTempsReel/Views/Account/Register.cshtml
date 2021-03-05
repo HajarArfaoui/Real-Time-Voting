@@ -1,0 +1,71 @@
+﻿@model VoteTempsReel.Models.RegisterModel
+@{
+    ViewBag.Title = "S'inscrire";
+}
+<br />
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+
+</hgroup>
+
+@using (Html.BeginForm("Register","Account", FormMethod.Post,
+                    new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Inscription</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Prenom)
+                @Html.TextBoxFor(m => m.Prenom)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.CIN)
+                @Html.TextBoxFor(m => m.CIN)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Adresse)
+                @Html.TextBoxFor(m => m.Adresse)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Naissance)
+                @Html.TextBoxFor(m => m.Naissance)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Telephone)
+                @Html.TextBoxFor(m => m.Telephone)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.ConfirmPassword)
+                @Html.PasswordFor(m => m.ConfirmPassword)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Photo)
+                <input type="file" name="file" id="file"  /> <br />
+            </li>
+        </ol>
+        <input type="submit" value="S'inscrire" style="width:50px" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "A propos";
+}
+<br />
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+
+</hgroup>
+
+
+    <font style="font-size:16px">
+        Grâce à notre système de vote électronique , vous pouvez prendre connaissance du nombre d'électeurs ayant pris part au vote. Vous pouvez ainsi suivre en temps réel le taux de participation électorale,
+        où au fur et à mesure, le système compte, les votes qui ont été fait et vous les trouverez dans un graphique qui montre, en temps réel, l'évolution de la participation électorale,
+        ainsi vous pouvez consulter la liste des candidats qui sont condidatés dans cette session d'éléction.
+    
+        </font>
+    <br /><br /><br />
+    <div class="fadein" style="margin-left:10%">
+
+        <img src="~/Images/Capture1.PNG" />
+        <img src="~/Images/Capture2.PNG" />
+        <img src="~/Images/Capture3.PNG" />
+        <img src="~/Images/accueil.PNG" />
+
+    </div>
+   
+
+
+
+@Scripts.Render("~/bundles/jquery")
+<script>
+    $(function () {
+        $('.fadein img:gt(0)').hide();
+        setInterval(function () {
+            $('.fadein :first-child').fadeOut()
+               .next('img').fadeIn()
+               .end().appendTo('.fadein');
+        },
+          6000);
+    });
+</script>
+

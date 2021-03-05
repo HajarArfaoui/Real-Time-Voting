@@ -1,0 +1,98 @@
+﻿@model IEnumerable<VoteTempsReel.Models.UserProfile>
+
+@{
+    ViewBag.Title = "List";
+}
+<br />
+<h1>Liste</h1>
+
+<p>
+   @*@Html.ActionLink("Ajouter un nouveau", "Register")
+    @Html.ActionLink("Changer le rôle", "RoleAddToUser")*@
+  
+    <input type="submit" value="Changer le rôle" style="width:200px" onclick="location.href='/Account/RoleAddToUser'" />
+  
+</p>
+<div id="list">
+<table>
+    <tr>
+
+        <th style="color:green;">
+           Profile
+        </th>
+       <th></th>
+        <th style="color:green;">
+            Détails du ID
+        </th>
+        <th></th>
+        <th style ="color:green;">
+            Informations personnelles 
+        </th>
+        <th></th>
+        <th style="color:green;">
+            Contact
+        </th>
+        <th></th>
+        <th></th>
+
+       
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                <img src="~/images/@item.Url_image" width="100" height="100" /><br />
+               <font size="2"><b>@Html.DisplayFor(modelItem => item.Nom)&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.Prenom)</b></font>
+            </td>
+            <td></td>
+            <td>
+                <font size="2"><b>ID</b>&nbsp; &nbsp;@Html.DisplayFor(modelItem => item.UserId)</font><br />
+                <font size="2"><b> UserName</b>&nbsp; &nbsp;@Html.DisplayFor(modelItem => item.UserName) </font><br />
+                <font size="2"><b> Rôle</b>&nbsp; &nbsp;@if (Roles.GetRolesForUser(item.UserName).Contains("admin"))
+                                                        { Write("Admin"); }
+                                                        @if (Roles.GetRolesForUser(item.UserName).Contains("candidat"))
+                                                        { Write("Candidat"); }
+                                                        @if (Roles.GetRolesForUser(item.UserName).Contains("user"))
+                                                        { Write("User"); }
+                                                         </font>
+                
+                
+              
+
+            </td>
+            <td></td>
+
+            <td>
+              <font size="2"><b>DateNaissance</b>&nbsp;&nbsp; @Html.DisplayFor(modelItem => item.Date)</font> <br />
+               <font size="2"><b>CIN</b>&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.CIN)</font> <br />
+                <font size="2"><b>Status de Vote  </b>&nbsp;&nbsp; @if (item.Voter=="1")
+                { Write("A voté"); }
+                @if (item.Voter == "0")
+                { Write("Pas encore Voté"); }
+                </font>
+            </td>
+           <td></td>
+            <td>
+               <font size="2"><b>Adresse</b> &nbsp;&nbsp;@Html.DisplayFor(modelItem => item.Adresse)</font><br />
+               <font size="2"><b>Email</b>&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.Email)</font><br />
+                <font size="2"><b>Téléphone</b>&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.Telephone)</font>
+            </td>
+            
+            <td></td>
+            <td>
+                <font size="2">
+                    <b>@Html.ActionLink("Modifier", "Edit", new { UserId = item.UserId })</b><b>@Html.ActionLink("Supprimer", "Delete", new { UserId = item.UserId })
+                   </b> 
+                </font>
+            </td>
+        </tr>
+        
+
+    }
+
+</table>
+
+</div>
+

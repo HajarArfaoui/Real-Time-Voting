@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2>Dashboard</h2>
+
+<section id="chartResult"></section>
+
+@section scripts {
+    <!--Script references. -->
+    <!--The jQuery library is required and is referenced by default in _Layout.cshtml. -->
+    <!--Reference the SignalR library. -->
+    <script src="~/Scripts/jquery-2.2.4.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+
+    <script src="~/Scripts/d3.min.js"></script>
+    <script src="~/Scripts/react/react.min.js"></script>
+
+    <script src="~/Scripts/jsx/piechart.jsx"></script>
+    <script src="~/Scripts/jsx/dashboard.jsx"></script>
+}

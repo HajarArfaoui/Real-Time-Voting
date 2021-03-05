@@ -1,0 +1,120 @@
+﻿@model VoteTempsReel.Models.UserProfile
+@{
+    ViewBag.Title = "Edit";
+}
+<br />
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h1>Modification</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserName)
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nom)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nom)
+            @Html.ValidationMessageFor(model => model.Nom)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Prenom)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Prenom)
+            @Html.ValidationMessageFor(model => model.Prenom)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CIN)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CIN)
+            @Html.ValidationMessageFor(model => model.CIN)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Adresse)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Adresse)
+            @Html.ValidationMessageFor(model => model.Adresse)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Telephone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Telephone)
+            @Html.ValidationMessageFor(model => model.Telephone)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Voter)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Voter)
+            @Html.ValidationMessageFor(model => model.Voter)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Url_image)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Url_image)
+            @Html.ValidationMessageFor(model => model.Url_image)
+        </div>
+
+        <p>
+            <input type="submit" value="enregitrer" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Retour", "List")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

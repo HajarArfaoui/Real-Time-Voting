@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title -Vote en Temps Rèel</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+   @Styles.Render("~/Content/Site.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header>
+        <div class="content-wrapper">
+            
+            <div class="float-left">
+                <h2 id="timecountdown"></h2>
+            </div>
+
+            <div class="float-right">
+             
+                <section id="login">
+                    @Html.Partial("_LoginPartial")
+                </section>
+                <nav>
+                    <ul id="menu">
+                        <li>@Html.ActionLink("Accueil", "Dashboard", "Home")</li>
+                        <li>@Html.ActionLink("Voter", "Index", "Home")</li>
+                        <li>@Html.ActionLink("A propos", "Apropos", "Home")</li>
+                        @if (Roles.GetRolesForUser(User.Identity.Name).Contains("admin"))
+                        {
+                            <li>@Html.ActionLink("Administration", "List", "Account")</li>
+                        }
+                        <li>@Html.ActionLink("Contact", "Contact", "Account")</li>
+                       
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </header>
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+            
+        </section>
+        
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left" style="font-size:medium;color:#4980C1;">
+                <br />
+                <center>&copy; @DateTime.Now.Year -Application de Vote En Temps Réel</center>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
+    
+    <script>
+    var dt = '@ViewBag.Rem_Time';
+    var dateAr = dt.split('-');
+    var newDate = dateAr[1] + '/' + dateAr[0] + '/' + dateAr[2];
+
+    var end = new Date("Mar 19, 2021 00:00:00");
+
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var _day = _hour * 24;
+    var timer;
+
+    function showRemaining() {
+        var now = new Date();
+        var distance = end - now;
+        if (distance <= 0) {
+            clearInterval(timer);
+            document.getElementById('timecountdown').innerHTML = 'le vote est terminé !';
+            
+            return;
+        }
+        var _days = Math.floor(distance / _day);
+        var _hours = Math.floor((distance % _day) / _hour);
+        var _minutes = Math.floor((distance % _hour) / _minute);
+        var _seconds = Math.floor((distance % _minute) / _second);
+        document.getElementById('timecountdown').innerHTML = _days;
+        document.getElementById('timecountdown').innerHTML += ' : ' + _hours;
+        document.getElementById('timecountdown').innerHTML += ' : ' + _minutes;
+        document.getElementById('timecountdown').innerHTML += ' : ' + _seconds;
+    }
+    timer = setInterval(showRemaining, 1000);
+    </script>
+</body>
+</html>

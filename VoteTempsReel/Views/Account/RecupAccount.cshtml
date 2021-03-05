@@ -1,0 +1,23 @@
+﻿@model VoteTempsReel.Models.RecupAccountModel
+@{
+    ViewBag.Title = "Forgetpassword";
+}
+<br />
+<h1>Récuperer Mot de passe </h1>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Registration Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Email)
+                
+                @Html.TextBoxFor(m => m.Email)
+            </li>
+        </ol>
+        <input type="submit" value="Envoyer" />
+    </fieldset>
+}

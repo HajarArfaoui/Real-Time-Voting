@@ -1,0 +1,51 @@
+﻿@model IEnumerable<VoteTempsReel.Models.UserProfile>
+
+@{
+    ViewBag.Title = "Résultat";
+}
+<br />
+<h1>Résultat</h1>
+
+<section id="loginForm"></section>
+
+    @section scripts {
+        <!--Script references. -->
+        <!--The jQuery library is required and is referenced by default in _Layout.cshtml. -->
+        <!--Reference the SignalR library. -->
+        <script src="~/Scripts/jquery-2.2.4.min.js"></script>
+        <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+        <script src="~/signalr/hubs"></script>
+
+        <script src="~/Scripts/d3.min.js"></script>
+        <script src="~/Scripts/react/react.min.js"></script>
+
+        <script src="~/Scripts/jsx/piechart.jsx"></script>
+        <script src="~/Scripts/jsx/dashboard.jsx"></script>
+    }
+    <section class="social" id="socialLoginForm" style="margin-top: -450px;margin-left: 650px;">
+        <br />
+    <h1>Candidats</h1>
+
+    @using (Html.BeginForm())
+    {
+        <table border="1">
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+
+                    if (Roles.GetRolesForUser(item.UserName).Contains("candidat"))
+                    { 
+                    
+                    <tr>
+                        <td><img src="~/images/@item.Url_image" width="100" height="100" /></td>
+                        <td><h4>@Html.DisplayFor(model => @item.Nom)&nbsp;&nbsp;@Html.DisplayFor(model => @item.Prenom)</h4><br />@Html.DisplayFor(model => @item.Date)<br /><img src="~/images/email.png" width="30" height="17" />@Html.DisplayFor(model => @item.Email)<br /><img src="~/images/icon.png" width="30" height="17" />@Html.DisplayFor(model => @item.Adresse)<br /><br /><br></td>
+
+                    </tr>
+                }
+                }
+            </tbody>
+        </table>
+    }
+</section>
+
